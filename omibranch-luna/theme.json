@@ -1,0 +1,56 @@
+{
+  "key": "omibranch-luna",
+  "names": {
+    "ru": "Luna",
+    "en": "Luna"
+  },
+  "enabled": true,
+  "default": false,
+  "use_primary_accent": false,
+  "use_in_admin": false,
+  "css_file": "theme.css",
+  "assets_version": 1,
+  "active_variant": "light",
+  "tokens": {
+    "color_scheme": "light",
+    "radius": "4px",
+    "font_sans": "var(--lw-font-ui)",
+    "font_logo": "var(--lw-font-title)",
+    "font_mono": "var(--lw-font-mono)",
+    "separator": "·",
+    "home_logo_scale_mobile": 100,
+    "home_logo_scale_desktop": 100
+  },
+  "variants": {
+    "light": {
+      "color_scheme": "light",
+      "accent": "#316ac5",
+      "bg": "#2a62d4",
+      "panel": "#ece9d8",
+      "panel_2": "#f6f4ec",
+      "panel_3": "#ffffff",
+      "border": "#aca899",
+      "border_strong": "#7f9db9",
+      "text": "#141414",
+      "muted": "#3c3c3c",
+      "dim": "#5f5f5f",
+      "danger": "#c4321a",
+      "blue": "#245edc"
+    },
+    "dark": {
+      "color_scheme": "dark",
+      "accent": "#4a8cf0",
+      "bg": "#0b1020",
+      "panel": "#26282d",
+      "panel_2": "#1d1f23",
+      "panel_3": "#30333a",
+      "border": "#43474e",
+      "border_strong": "#646a74",
+      "text": "#eef0f3",
+      "muted": "#c3c8cf",
+      "dim": "#979ea8",
+      "danger": "#ff7059",
+      "blue": "#6ea4ff"
+    }
+  }
+}

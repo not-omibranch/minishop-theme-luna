@@ -1,0 +1,285 @@
+/* Luna helper cat: layer, sprite and the XP balloon. Omibranch · omibranch.uk · MIT */
+
+.luna-cat-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+  contain: layout style;
+}
+
+.luna-cat-layer.is-ready {
+  opacity: 1;
+}
+
+.luna-cat-layer.is-over-dialog {
+  z-index: 230;
+}
+
+.luna-cat-layer.is-away .luna-cat,
+.luna-cat-layer.is-away .luna-balloon {
+  visibility: hidden;
+}
+
+.luna-cat-layer.is-gone {
+  opacity: 0;
+}
+
+.luna-cat {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  pointer-events: auto;
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.luna-cat-layer.is-moving .luna-cat {
+  pointer-events: none;
+}
+
+.luna-cat:focus-visible {
+  outline: 1px dotted #ffffff;
+  outline-offset: 2px;
+}
+
+.luna-cat-flip {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 100%;
+  filter: drop-shadow(0 2px 2px rgba(0, 18, 70, 0.45));
+}
+
+.luna-cat-flip img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: none;
+  max-width: none;
+  transform: translateX(-50%);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.luna-cat[data-pose="sit"] img[data-pose="sit"],
+.luna-cat[data-pose="look"] img[data-pose="look"],
+.luna-cat[data-pose="walkA"] img[data-pose="walkA"],
+.luna-cat[data-pose="walkB"] img[data-pose="walkB"],
+.luna-cat[data-pose="sleep"] img[data-pose="sleep"],
+.luna-cat[data-pose="point"] img[data-pose="point"],
+.luna-cat[data-pose="jump"] img[data-pose="jump"],
+.luna-cat[data-pose="peek"] img[data-pose="peek"],
+.luna-cat[data-pose="wave"] img[data-pose="wave"] {
+  display: block;
+}
+
+/* A sleeping cat breathes out a single small z, set in the window font. */
+.luna-cat-zzz {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  display: none;
+  color: #ffffff;
+  font: italic 700 12px/1 "Trebuchet MS", "Luna UI", Tahoma, sans-serif;
+  text-shadow: 0 1px 2px rgba(0, 10, 50, 0.7);
+  pointer-events: none;
+}
+
+.luna-cat-layer.is-sleeping .luna-cat-zzz {
+  display: block;
+  animation: luna-zzz 2.6s ease-in-out infinite;
+}
+
+@keyframes luna-zzz {
+  0% { opacity: 0; transform: translate(0, 4px) scale(0.8); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translate(6px, -12px) scale(1.15); }
+}
+
+/* ---------------- the balloon ---------------- */
+
+.luna-balloon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 8px 10px 10px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  background: #ffffe1;
+  color: #000000;
+  box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.32);
+  font: 400 12px/1.38 Tahoma, "Luna UI", "Segoe UI", Verdana, sans-serif;
+  text-align: left;
+  pointer-events: auto;
+}
+
+.luna-balloon[hidden] {
+  display: none;
+}
+
+.luna-balloon.is-in {
+  animation: luna-balloon-in 0.18s ease-out both;
+}
+
+@keyframes luna-balloon-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.luna-balloon-head {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.luna-balloon-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.luna-balloon-head strong {
+  overflow: hidden;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.luna-balloon-close {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 1px solid #a4a28f;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #ffffff, #e9e7d6);
+  cursor: pointer;
+}
+
+.luna-balloon-close::before,
+.luna-balloon-close::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 3px;
+  width: 8px;
+  height: 2px;
+  border-radius: 1px;
+  background: #4a4a3e;
+  transform: rotate(45deg);
+}
+
+.luna-balloon-close::after {
+  transform: rotate(-45deg);
+}
+
+.luna-balloon-close:hover {
+  border-color: #e5a01a;
+}
+
+.luna-balloon p {
+  margin: 0 0 0 22px;
+}
+
+.luna-balloon-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 0 22px;
+}
+
+.luna-balloon-actions[hidden] {
+  display: none;
+}
+
+.luna-balloon-btn {
+  min-height: 24px;
+  padding: 2px 10px;
+  border: 1px solid #003c74;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f5f0 40%, #ecebe5 86%, #d7d1c6 100%);
+  color: #000000;
+  font: inherit;
+  cursor: pointer;
+}
+
+.luna-balloon-btn:hover {
+  box-shadow: inset -1px 1px 0 #fff0cf, inset 1px 2px 0 #fdd889, inset -2px 2px 0 #fbc761, inset 2px -2px 0 #e5a01a;
+}
+
+.luna-balloon-btn:focus-visible,
+.luna-balloon-close:focus-visible {
+  outline: 1px dotted #000000;
+  outline-offset: -4px;
+}
+
+/* The tail: black outline triangle with a yellow one inside. */
+.luna-balloon-tail {
+  position: absolute;
+  width: 18px;
+  height: 12px;
+  pointer-events: none;
+}
+
+.luna-balloon-tail::before,
+.luna-balloon-tail::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  border-right: 9px solid transparent;
+  border-left: 9px solid transparent;
+}
+
+.luna-balloon[data-side="above"] .luna-balloon-tail {
+  bottom: -12px;
+}
+
+.luna-balloon[data-side="above"] .luna-balloon-tail::before {
+  top: 0;
+  border-top: 12px solid #000000;
+}
+
+.luna-balloon[data-side="above"] .luna-balloon-tail::after {
+  top: -1px;
+  border-top: 11px solid #ffffe1;
+  transform: scaleX(0.86);
+}
+
+.luna-balloon[data-side="below"] .luna-balloon-tail {
+  top: -12px;
+}
+
+.luna-balloon[data-side="below"] .luna-balloon-tail::before {
+  bottom: 0;
+  border-bottom: 12px solid #000000;
+}
+
+.luna-balloon[data-side="below"] .luna-balloon-tail::after {
+  bottom: -1px;
+  border-bottom: 11px solid #ffffe1;
+  transform: scaleX(0.86);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luna-cat-layer,
+  .luna-balloon.is-in {
+    transition: none;
+    animation: none;
+  }
+
+  .luna-cat-layer.is-sleeping .luna-cat-zzz {
+    animation: none;
+    opacity: 1;
+  }
+}

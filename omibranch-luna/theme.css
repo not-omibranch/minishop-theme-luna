@@ -1,0 +1,2306 @@
+/*
+ * Luna — a Windows XP inspired theme for Remnawave Minishop.
+ * Omibranch · omibranch.uk · MIT
+ *
+ * Light: the classic blue Luna. Dark: inspired by Royale Noir.
+ * Everything here is pure CSS; the optional helper cat lives in effects/.
+ * Windows XP, Luna and Royale Noir are trademarks or names of Microsoft;
+ * this theme is an independent homage and ships only original artwork.
+ */
+
+@font-face {
+  font-family: "Luna UI";
+  src: url("fonts/luna-ui-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Luna UI";
+  src: url("fonts/luna-ui-bold.woff2") format("woff2");
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Luna UI";
+  src: url("fonts/luna-ui-bold-italic.woff2") format("woff2");
+  font-weight: 600 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------------ */
+/* Palette                                                             */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna {
+  /* Tahoma and Trebuchet stay system fonts; phones get Luna UI (PT Sans, OFL). */
+  --lw-font-ui: Tahoma, "Luna UI", "Segoe UI", Verdana, sans-serif;
+  --lw-font-title: "Trebuchet MS", "Luna UI", Tahoma, sans-serif;
+  --lw-font-mono: "Lucida Console", Consolas, "Courier New", monospace;
+  --lw-bar-h: 28px;
+  --lw-bar-h-sm: 22px;
+  --lw-frame: #0831d9;
+  --lw-frame-in: #1c62ea;
+  --lw-bar: linear-gradient(180deg, #4a95fd 0%, #1167f4 8%, #0459ea 30%, #0254e5 58%, #0a62f4 86%, #0759eb 93%, #033fc4 100%);
+  --lw-bar-ink: #ffffff;
+  --lw-bar-glow: 1px 1px 0 #0a1f73;
+  --lw-window: #ece9d8;
+  --lw-window-2: #f6f4ec;
+  --lw-field: #ffffff;
+  --lw-field-border: #7f9db9;
+  --lw-group: #d0d0bf;
+  --lw-ink: #141414;
+  --lw-btn: linear-gradient(180deg, #ffffff 0%, #f6f5f0 40%, #ecebe5 86%, #d7d1c6 100%);
+  --lw-btn-press: linear-gradient(180deg, #cdcac3 0%, #e3e3db 10%, #e6e6df 92%, #f3f3f1 100%);
+  --lw-btn-border: #003c74;
+  --lw-btn-ink: #141414;
+  --lw-btn-hover: inset -1px 1px 0 #fff0cf, inset 1px 2px 0 #fdd889, inset -2px 2px 0 #fbc761, inset 2px -2px 0 #e5a01a;
+  --lw-btn-focus: inset -1px 1px 0 #cee7ff, inset 1px 2px 0 #98b8ea, inset -2px 2px 0 #bcd4f6, inset 1px -1px 0 #89ade4, inset 2px -2px 0 #89ade4;
+  --lw-start: linear-gradient(180deg, #86d676 0%, #58b445 12%, #43a332 42%, #379526 78%, #2d841e 100%);
+  --lw-start-hover: linear-gradient(180deg, #97e087 0%, #66c152 12%, #4eb03b 42%, #41a12e 78%, #368f24 100%);
+  --lw-start-press: linear-gradient(180deg, #2a7a1c 0%, #339022 30%, #3f9e2e 100%);
+  --lw-start-border: #20701a;
+  --lw-taskbar: linear-gradient(180deg, #3f8cf3 0%, #2a6fe8 7%, #2563de 16%, #225bd6 46%, #2461de 86%, #1f55cb 94%, #1a46a3 100%);
+  --lw-task-btn: linear-gradient(180deg, #6aa8fb 0%, #3e86f3 30%, #357bef 74%, #2d6cdb 100%);
+  --lw-task-btn-on: linear-gradient(180deg, #17409a 0%, #1d4cb0 18%, #2052bd 82%, #1a47a6 100%);
+  --lw-tray: linear-gradient(180deg, #23a4f2 0%, #149ae9 10%, #1290e0 50%, #148fdc 86%, #0f78c4 100%);
+  --lw-select-soft: #dce7f9;
+  --lw-select-line: #7da2ce;
+  --lw-balloon: #ffffe1;
+  --lw-balloon-ink: #000000;
+  --lw-track: #ffffff;
+  --lw-track-border: #6f8db7;
+  --lw-blocks: linear-gradient(180deg, #b5efb3 0%, #84e384 16%, #45d548 34%, #2ccc2e 50%, #3fd442 64%, #7ee17f 82%, #c8f4c6 100%);
+  --lw-blocks-2: linear-gradient(180deg, #c6dcff 0%, #95bdfd 16%, #4f8ff7 34%, #2a72ee 50%, #4b8bf5 66%, #8fb9fb 84%, #d6e6ff 100%);
+  --lw-shadow: 0 10px 26px rgba(8, 30, 92, 0.3), 0 2px 5px rgba(8, 30, 92, 0.2);
+  --lw-wall-tall: url("img/day-tall.webp");
+  --lw-wall-wide: url("img/day-wide.webp");
+  --lw-wall-color: #2f6bd8;
+  --lw-desktop-ink: #ffffff;
+  --lw-desktop-glow: 0 1px 2px rgba(0, 0, 30, 0.75), 0 0 10px rgba(0, 20, 80, 0.35);
+
+  --surface-sheen: transparent;
+  --surface-sheen-soft: transparent;
+  --success: #2e8b22;
+  --success-text: #1d6915;
+  --success-soft: #e2f1da;
+  --success-border: #7db86f;
+  --warning: #b77800;
+  --warning-text: #7a5000;
+  --warning-soft: #fff4cf;
+  --warning-border: #d9b04a;
+  --danger-text: #a8260f;
+  --danger-soft: #fbe5df;
+  --danger-border: #e0907f;
+  --info: #245edc;
+  --info-text: #1b48b0;
+  --info-soft: #e4ecfb;
+  --info-border: #8eaee6;
+  --surface-hover: rgba(49, 106, 197, 0.1);
+  --surface-muted: #e4e0cc;
+  --surface-subtle: #f4f2e8;
+  --surface-subtle-border: #cbc7b4;
+  --overlay-scrim: rgba(8, 26, 76, 0.34);
+  --nav-bg: transparent;
+  --rail-bg: #ffffff;
+  --shadow-soft: var(--lw-shadow);
+  --shadow-strong: 0 20px 50px rgba(6, 22, 70, 0.42), 0 3px 8px rgba(6, 22, 70, 0.22);
+  --shadow-popover: 0 8px 22px rgba(0, 0, 0, 0.28);
+  --inset-highlight: rgba(255, 255, 255, 0.7);
+  --radius-dialog: 8px;
+  --accent-contrast: #ffffff;
+}
+
+/* Royale Noir: black glass, charcoal windows, the same green Start. */
+.theme-key-omibranch-luna.theme-variant-dark {
+  --lw-frame: #050607;
+  --lw-frame-in: #2c2f35;
+  --lw-bar: linear-gradient(180deg, #767b85 0%, #42464e 6%, #2a2d33 34%, #1a1c20 70%, #121315 92%, #050506 100%);
+  --lw-bar-ink: #f4f6f9;
+  --lw-bar-glow: 0 1px 0 #000000;
+  --lw-window: #26282d;
+  --lw-window-2: #1f2125;
+  --lw-field: #15171a;
+  --lw-field-border: #5a606a;
+  --lw-group: #3b3e44;
+  --lw-ink: #eef0f3;
+  --lw-btn: linear-gradient(180deg, #555a62 0%, #41454c 40%, #34373d 86%, #2a2c31 100%);
+  --lw-btn-press: linear-gradient(180deg, #1c1d20 0%, #26282c 12%, #2b2d32 100%);
+  --lw-btn-border: #0b0c0e;
+  --lw-btn-ink: #f1f3f6;
+  --lw-btn-hover: inset -1px 1px 0 #8f7440, inset 1px 2px 0 #c99a45, inset -2px 2px 0 #b98a35, inset 2px -2px 0 #a8731d;
+  --lw-btn-focus: inset -1px 1px 0 #6a8fc9, inset 1px 2px 0 #4f74b0, inset -2px 2px 0 #5d82bd, inset 2px -2px 0 #3f62a0;
+  --lw-start: linear-gradient(180deg, #74c463 0%, #46a236 12%, #338a25 44%, #2a781d 80%, #225f16 100%);
+  --lw-start-hover: linear-gradient(180deg, #83d272 0%, #52b041 12%, #3c982d 44%, #318623 80%, #276b1a 100%);
+  --lw-start-press: linear-gradient(180deg, #1f5714 0%, #2a741d 30%, #34882a 100%);
+  --lw-start-border: #0f3a0a;
+  --lw-taskbar: linear-gradient(180deg, #5d626b 0%, #33363c 5%, #1d1f23 36%, #121315 70%, #0a0a0c 100%);
+  --lw-task-btn: linear-gradient(180deg, #555a63 0%, #3b3e45 40%, #2c2e33 100%);
+  --lw-task-btn-on: linear-gradient(180deg, #050506 0%, #0f1012 20%, #16171a 100%);
+  --lw-tray: linear-gradient(180deg, #3a3d44 0%, #24262b 40%, #17181b 100%);
+  --lw-select-soft: #2b3a52;
+  --lw-select-line: #4a6fa8;
+  --lw-balloon: #fffbd9;
+  --lw-balloon-ink: #1a1a1a;
+  --lw-track: #101113;
+  --lw-track-border: #4d525b;
+  --lw-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4);
+  --lw-wall-tall: url("img/night-tall.webp");
+  --lw-wall-wide: url("img/night-wide.webp");
+  --lw-wall-color: #0b1226;
+  --lw-desktop-glow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.5);
+
+  --success: #5cc24c;
+  --success-text: #8fe082;
+  --success-soft: #1d2f1b;
+  --success-border: #3f7a36;
+  --warning: #f0b429;
+  --warning-text: #f8d27a;
+  --warning-soft: #352b13;
+  --warning-border: #866726;
+  --danger-text: #ffaa9c;
+  --danger-soft: #3a201c;
+  --danger-border: #8d3a2e;
+  --info: #6ea4ff;
+  --info-text: #a9c8ff;
+  --info-soft: #1b2740;
+  --info-border: #3d5d93;
+  --surface-hover: rgba(255, 255, 255, 0.07);
+  --surface-muted: #2e3136;
+  --surface-subtle: #212327;
+  --surface-subtle-border: #3d4148;
+  --overlay-scrim: rgba(0, 0, 0, 0.55);
+  --rail-bg: #1b1d21;
+  --shadow-strong: 0 22px 56px rgba(0, 0, 0, 0.7), 0 3px 8px rgba(0, 0, 0, 0.5);
+  --shadow-popover: 0 10px 26px rgba(0, 0, 0, 0.6);
+  --inset-highlight: rgba(255, 255, 255, 0.06);
+}
+
+/* ------------------------------------------------------------------ */
+/* Desktop wallpaper                                                   */
+/* ------------------------------------------------------------------ */
+
+body:has(.theme-key-omibranch-luna) {
+  background: #2f6bd8;
+}
+
+body:has(.theme-key-omibranch-luna.theme-variant-dark) {
+  background: #0b1226;
+}
+
+.theme-key-omibranch-luna.app-shell {
+  isolation: isolate;
+  background: var(--lw-wall-color) !important;
+  color: var(--lw-ink);
+}
+
+.theme-key-omibranch-luna .phone-screen {
+  background: transparent !important;
+}
+
+.theme-key-omibranch-luna.app-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--lw-wall-tall) 50% 100% / cover no-repeat, var(--lw-wall-color);
+}
+
+@media (min-aspect-ratio: 4/5) {
+  .theme-key-omibranch-luna.app-shell::before {
+    background: var(--lw-wall-wide) 50% 72% / cover no-repeat, var(--lw-wall-color);
+  }
+}
+
+/* Desktop text sits on the wallpaper like icon captions: white with a soft drop. */
+.theme-key-omibranch-luna .login-brand h1,
+.theme-key-omibranch-luna .home-brand h1 {
+  color: var(--lw-desktop-ink);
+  font-family: var(--font-logo);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-shadow: var(--lw-desktop-glow);
+}
+
+.theme-key-omibranch-luna .app-header .brand-row strong,
+.theme-key-omibranch-luna .accent-title .brand-row strong {
+  color: var(--lw-desktop-ink);
+  font-family: var(--font-logo);
+  font-weight: 700;
+  text-shadow: var(--lw-desktop-glow);
+}
+
+.theme-key-omibranch-luna .app-header .brand-row small,
+.theme-key-omibranch-luna .app-header .brand-row span {
+  color: rgba(255, 255, 255, 0.86);
+  text-shadow: var(--lw-desktop-glow);
+}
+
+.theme-key-omibranch-luna .section-kicker,
+.theme-key-omibranch-luna .payment-method-picker-label,
+.theme-key-omibranch-luna .install-section-title {
+  color: var(--dim);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Windows                                                             */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna .card,
+.theme-key-omibranch-luna .dialog-card,
+.theme-key-omibranch-luna .notification-preferences {
+  --lw-ico: url("icons/document.webp");
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--lw-frame);
+  border-radius: 8px 8px 4px 4px;
+  background: var(--lw-window);
+  color: var(--lw-ink);
+  box-shadow: inset 0 0 0 2px var(--lw-frame-in), var(--lw-shadow);
+  padding: calc(var(--lw-bar-h) + 12px) 14px 14px;
+}
+
+.theme-key-omibranch-luna .card::before,
+.theme-key-omibranch-luna .dialog-card::before,
+.theme-key-omibranch-luna .notification-preferences::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: var(--lw-bar-h);
+  pointer-events: none;
+  background: var(--lw-ico) 8px 50% / 16px 16px no-repeat, var(--lw-bar);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.28);
+}
+
+.theme-key-omibranch-luna .card-compact {
+  padding: calc(var(--lw-bar-h-sm) + 10px) 12px 12px;
+}
+
+.theme-key-omibranch-luna .card-compact::before {
+  height: var(--lw-bar-h-sm);
+  background: var(--lw-ico) 6px 50% / 14px 14px no-repeat, var(--lw-bar);
+}
+
+.theme-key-omibranch-luna .dialog-card {
+  padding: calc(var(--lw-bar-h) + 14px) 16px 16px;
+  box-shadow: inset 0 0 0 2px var(--lw-frame-in), var(--shadow-strong);
+}
+
+/* Window icons. */
+.theme-key-omibranch-luna .status-card { --lw-ico: url("icons/shield.webp"); }
+.theme-key-omibranch-luna .status-card-inactive { --lw-ico: url("icons/error.webp"); }
+.theme-key-omibranch-luna .traffic-card-compact { --lw-ico: url("icons/updown.webp"); }
+.theme-key-omibranch-luna .premium-traffic-card { --lw-ico: url("icons/satellite.webp"); }
+.theme-key-omibranch-luna .trial-card,
+.theme-key-omibranch-luna .trial-offer-card,
+.theme-key-omibranch-luna .gift-entry { --lw-ico: url("icons/gift.webp"); }
+.theme-key-omibranch-luna .devices-summary-card,
+.theme-key-omibranch-luna .device-card { --lw-ico: url("icons/smartphone.webp"); }
+.theme-key-omibranch-luna .settings-profile { --lw-ico: url("icons/user.webp"); }
+.theme-key-omibranch-luna .support-overview-card,
+.theme-key-omibranch-luna .support-list-card,
+.theme-key-omibranch-luna .support-conversation-card { --lw-ico: url("icons/chat.webp"); }
+.theme-key-omibranch-luna .bonus-card { --lw-ico: url("icons/users.webp"); }
+.theme-key-omibranch-luna .install-step { --lw-ico: url("icons/download.webp"); }
+.theme-key-omibranch-luna .telegram-notifications-card { --lw-ico: url("icons/bell.webp"); }
+.theme-key-omibranch-luna .webapp-payment-dialog { --lw-ico: url("icons/card.webp"); }
+.theme-key-omibranch-luna .webapp-tariff-change-dialog { --lw-ico: url("icons/refresh.webp"); }
+
+/* The subscription window wears its status as the window title. */
+.theme-key-omibranch-luna .status-card:not(.status-card-inactive) .sub-status-main > h2 {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  left: 30px;
+  height: var(--lw-bar-h);
+  margin: 0;
+  overflow: hidden;
+  color: var(--lw-bar-ink);
+  font-family: var(--font-logo);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: var(--lw-bar-h);
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-shadow: var(--lw-bar-glow);
+}
+
+.theme-key-omibranch-luna .status-card:not(.status-card-inactive) .sub-status-main > h2 * {
+  color: inherit;
+}
+
+/* Dialog titles move into the title bar, the close button becomes the red X. */
+.theme-key-omibranch-luna .dialog-card .dialog-title-copy > h2 {
+  position: absolute;
+  top: 0;
+  right: 44px;
+  left: 30px;
+  height: var(--lw-bar-h);
+  margin: 0;
+  overflow: hidden;
+  color: var(--lw-bar-ink);
+  font-family: var(--font-logo);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: var(--lw-bar-h);
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-shadow: var(--lw-bar-glow);
+}
+
+.theme-key-omibranch-luna .dialog-card .dialog-title-copy > p {
+  margin-top: 0;
+  color: var(--dim);
+}
+
+.theme-key-omibranch-luna .dialog-card .dialog-close-button {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  z-index: 2;
+  display: grid;
+  width: 22px;
+  height: 22px;
+  min-width: 0;
+  min-height: 0;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #f3a28e 0%, #e2674a 26%, #d54e2f 60%, #cb4122 100%);
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.16);
+}
+
+.theme-key-omibranch-luna .dialog-card .dialog-close-button::after {
+  content: "";
+  position: absolute;
+  inset: -7px -5px -9px -11px;
+}
+
+.theme-key-omibranch-luna .dialog-card .dialog-close-button:hover:not(:disabled) {
+  background: linear-gradient(180deg, #f8b8a7 0%, #ec7c60 26%, #df5e3f 60%, #d4502f 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.16);
+}
+
+.theme-key-omibranch-luna .dialog-card .dialog-close-button:active:not(:disabled) {
+  background: linear-gradient(180deg, #b93a1c 0%, #c94a2b 40%, #d65c3d 100%);
+}
+
+.theme-key-omibranch-luna .dialog-card .dialog-close-button svg {
+  width: 14px;
+  height: 14px;
+  color: #ffffff;
+  stroke: #ffffff;
+  stroke-width: 3.2;
+}
+
+.theme-key-omibranch-luna.theme-variant-dark .dialog-card .dialog-close-button {
+  border-color: #9aa0aa;
+}
+
+/* ------------------------------------------------------------------ */
+/* Buttons                                                             */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna .btn,
+.theme-key-omibranch-luna .link-button.btn {
+  border: 1px solid var(--lw-btn-border);
+  border-radius: 3px;
+  background: var(--lw-btn);
+  color: var(--lw-btn-ink);
+  box-shadow: none;
+  text-shadow: none;
+  transition: none;
+  transform: none;
+}
+
+.theme-key-omibranch-luna .btn:hover:not(:disabled) {
+  background: var(--lw-btn);
+  box-shadow: var(--lw-btn-hover);
+  transform: none;
+  filter: none;
+}
+
+.theme-key-omibranch-luna .btn:active:not(:disabled) {
+  background: var(--lw-btn-press);
+  box-shadow: none;
+  transform: none;
+}
+
+.theme-key-omibranch-luna .btn:focus-visible {
+  outline: 1px dotted var(--lw-ink);
+  outline-offset: -5px;
+  box-shadow: var(--lw-btn-focus);
+}
+
+.theme-key-omibranch-luna .btn:disabled {
+  border-color: #c9c7ba;
+  background: #f4f3ee;
+  color: #a19f92;
+  opacity: 1;
+}
+
+.theme-key-omibranch-luna.theme-variant-dark .btn:disabled {
+  border-color: #2f3237;
+  background: #24262a;
+  color: #6c727c;
+}
+
+.theme-key-omibranch-luna .btn-ghost {
+  border-color: transparent;
+  background: transparent;
+}
+
+.theme-key-omibranch-luna .btn-ghost:hover:not(:disabled) {
+  border-color: var(--lw-select-line);
+  background: var(--lw-select-soft);
+  box-shadow: none;
+}
+
+.theme-key-omibranch-luna .btn-outline.device-disconnect-button,
+.theme-key-omibranch-luna .btn-danger,
+.theme-key-omibranch-luna .btn-outline-danger {
+  color: var(--danger-text);
+}
+
+/* The Start button: every primary action. */
+.theme-key-omibranch-luna .btn-primary {
+  border: 1px solid var(--lw-start-border);
+  border-radius: 10px;
+  background: var(--lw-start);
+  color: #ffffff;
+  font-family: var(--font-logo);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow: 1px 1px 2px rgba(0, 32, 0, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -3px 6px rgba(0, 50, 0, 0.22),
+    0 2px 5px rgba(0, 40, 0, 0.28);
+}
+
+.theme-key-omibranch-luna .btn-primary:hover:not(:disabled) {
+  background: var(--lw-start-hover);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -3px 6px rgba(0, 50, 0, 0.2),
+    0 2px 6px rgba(0, 40, 0, 0.32);
+}
+
+.theme-key-omibranch-luna .btn-primary:active:not(:disabled) {
+  background: var(--lw-start-press);
+  box-shadow: inset 0 2px 5px rgba(0, 30, 0, 0.45);
+}
+
+.theme-key-omibranch-luna .btn-primary:focus-visible {
+  outline: 1px dotted #ffffff;
+  outline-offset: -5px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 0 0 2px #fbc761;
+}
+
+.theme-key-omibranch-luna .btn-primary:disabled {
+  border-color: #8bb683;
+  background: linear-gradient(180deg, #b7d9ae, #9cc893);
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.theme-key-omibranch-luna .btn-primary:not(.wide) {
+  border-radius: 8px;
+}
+
+.theme-key-omibranch-luna .btn-primary svg {
+  filter: drop-shadow(1px 1px 1px rgba(0, 30, 0, 0.45));
+}
+
+/* ------------------------------------------------------------------ */
+/* Taskbar (mobile) and Start menu (desktop rail)                      */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1023px) {
+  .theme-key-omibranch-luna {
+    --bottom-nav-offset: 0px;
+    --bottom-nav-left: 0px;
+    --bottom-nav-width: 100%;
+    --bottom-nav-bottom: 0px;
+    --bottom-nav-clearance: calc(var(--bottom-nav-height) + var(--content-safe-area-bottom) + 22px);
+  }
+
+  .theme-key-omibranch-luna .bottom-nav {
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    height: calc(var(--bottom-nav-height) + var(--content-safe-area-bottom));
+    min-height: calc(var(--bottom-nav-height) + var(--content-safe-area-bottom));
+    gap: 4px;
+    padding: 6px max(8px, var(--safe-inline)) calc(6px + var(--content-safe-area-bottom));
+    border: 0;
+    border-top: 1px solid #0b2f96;
+    border-radius: 0;
+    background: var(--lw-taskbar);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38);
+    backdrop-filter: none;
+  }
+
+  .theme-key-omibranch-luna.theme-variant-dark .bottom-nav {
+    border-top-color: #000000;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+
+  .theme-key-omibranch-luna .bottom-nav.bottom-nav-many {
+    height: calc(58px + var(--content-safe-area-bottom));
+    min-height: calc(58px + var(--content-safe-area-bottom));
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button {
+    border: 1px solid rgba(0, 20, 90, 0.55);
+    border-radius: 4px;
+    background: var(--lw-task-btn);
+    color: #ffffff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 1px 0 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button.active {
+    border-color: rgba(0, 10, 60, 0.7);
+    background: var(--lw-task-btn-on);
+    color: #ffffff;
+    box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button:last-child {
+    border-color: rgba(0, 30, 90, 0.5);
+    background: var(--lw-tray);
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button:last-child.active {
+    background: var(--lw-task-btn-on);
+  }
+
+  .theme-key-omibranch-luna.theme-variant-dark .bottom-nav button {
+    border-color: #000000;
+  }
+}
+
+.theme-key-omibranch-luna .bottom-nav .attention-dot,
+.theme-key-omibranch-luna .attention-dot.nav-attention-dot {
+  border: 1px solid #ffffff;
+  background: radial-gradient(circle at 35% 30%, #ffb199 0%, #f0532c 45%, #c42d0e 100%) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  animation: none;
+}
+
+@media (min-width: 1024px) {
+  .theme-key-omibranch-luna .bottom-nav {
+    border: 0;
+    border-right: 1px solid var(--lw-frame);
+    border-radius: 0;
+    background: var(--rail-bg);
+    box-shadow: inset -2px 0 0 var(--lw-frame-in), 6px 0 24px rgba(0, 20, 70, 0.25);
+    backdrop-filter: none;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav .rail-brand {
+    position: relative;
+    margin: -1px -1px 8px;
+    padding: 14px 12px;
+    border: 0;
+    border-radius: 0;
+    background: var(--lw-bar);
+    box-shadow: inset 0 -2px 0 #e8a33d, inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .theme-key-omibranch-luna.theme-variant-dark .bottom-nav .rail-brand {
+    box-shadow: inset 0 -2px 0 #3a7d2c, inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .theme-key-omibranch-luna .bottom-nav .rail-brand .brand-mark {
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+  }
+
+  .theme-key-omibranch-luna .bottom-nav .rail-brand strong,
+  .theme-key-omibranch-luna .bottom-nav .rail-brand span {
+    color: #ffffff !important;
+    font-family: var(--font-logo);
+    font-weight: 700;
+    text-shadow: var(--lw-bar-glow);
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--lw-ink);
+    text-shadow: none;
+    box-shadow: none;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button:hover,
+  .theme-key-omibranch-luna .bottom-nav button.active {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav .bottom-nav-label {
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button.active .bottom-nav-label {
+    font-weight: 700;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Progress: the green blocks of a file copy                           */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna .progress {
+  height: 15px;
+  margin-top: 8px;
+  padding: 2px;
+  overflow: hidden;
+  border: 1px solid var(--lw-track-border);
+  border-radius: 3px !important;
+  background: var(--lw-track);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.14);
+}
+
+.theme-key-omibranch-luna .progress span {
+  height: 100%;
+  border-radius: 0 !important;
+  background:
+    linear-gradient(90deg, transparent 0 8px, var(--lw-track) 8px 10px) 0 0 / 10px 100% repeat-x,
+    var(--lw-blocks) !important;
+  box-shadow: none !important;
+}
+
+.theme-key-omibranch-luna .premium-progress span {
+  background:
+    linear-gradient(90deg, transparent 0 8px, var(--lw-track) 8px 10px) 0 0 / 10px 100% repeat-x,
+    var(--lw-blocks-2) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* Fields, selects and choice tiles                                    */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna .input,
+.theme-key-omibranch-luna .textarea,
+.theme-key-omibranch-luna input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]),
+.theme-key-omibranch-luna textarea,
+.theme-key-omibranch-luna select {
+  border: 1px solid var(--lw-field-border);
+  border-radius: 3px;
+  background: var(--lw-field);
+  color: var(--lw-ink);
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.08);
+  transition: none;
+}
+
+.theme-key-omibranch-luna .input:focus,
+.theme-key-omibranch-luna .textarea:focus,
+.theme-key-omibranch-luna input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):focus,
+.theme-key-omibranch-luna textarea:focus,
+.theme-key-omibranch-luna select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.theme-key-omibranch-luna input::placeholder,
+.theme-key-omibranch-luna textarea::placeholder {
+  color: #8a8a80;
+}
+
+.theme-key-omibranch-luna.theme-variant-dark input::placeholder,
+.theme-key-omibranch-luna.theme-variant-dark textarea::placeholder {
+  color: #7d838c;
+}
+
+.theme-key-omibranch-luna .period-card,
+.theme-key-omibranch-luna .method-card,
+.theme-key-omibranch-luna .option-row,
+.theme-key-omibranch-luna .tariff-action-card {
+  border: 1px solid var(--lw-group);
+  border-radius: 4px;
+  background: var(--lw-field);
+  color: var(--lw-ink);
+  box-shadow: none;
+  transition: none;
+}
+
+.theme-key-omibranch-luna .period-card:hover:not(:disabled),
+.theme-key-omibranch-luna .method-card:hover:not(:disabled),
+.theme-key-omibranch-luna .option-row:hover:not(:disabled),
+.theme-key-omibranch-luna .tariff-action-card:hover:not(:disabled) {
+  border-color: #e5a01a;
+  box-shadow: inset 0 0 0 1px #fbc761;
+  transform: none;
+}
+
+.theme-key-omibranch-luna .period-card.active,
+.theme-key-omibranch-luna .method-card.active,
+.theme-key-omibranch-luna .option-row.active,
+.theme-key-omibranch-luna .tariff-action-card.active {
+  border-color: var(--accent);
+  background: var(--lw-select-soft);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.theme-key-omibranch-luna .payment-method-select-trigger,
+.theme-key-omibranch-luna .language-select-trigger,
+.theme-key-omibranch-luna .install-platform-trigger,
+.theme-key-omibranch-luna .support-select-trigger {
+  border: 1px solid var(--lw-field-border);
+  border-radius: 3px;
+  background: var(--lw-field);
+  color: var(--lw-ink);
+  box-shadow: none;
+}
+
+.theme-key-omibranch-luna .payment-method-select-trigger > svg:last-child,
+.theme-key-omibranch-luna .language-select-trigger > svg:last-child,
+.theme-key-omibranch-luna .install-platform-trigger > svg:last-child,
+.theme-key-omibranch-luna .support-select-trigger > svg:last-child {
+  box-sizing: border-box;
+  width: 22px;
+  height: 22px;
+  padding: 4px;
+  border: 1px solid #a5bcea;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #e2ecfd 0%, #bad0f7 50%, #9cbaf1 100%);
+  color: #4d6185;
+}
+
+.theme-key-omibranch-luna.theme-variant-dark .payment-method-select-trigger > svg:last-child,
+.theme-key-omibranch-luna.theme-variant-dark .language-select-trigger > svg:last-child,
+.theme-key-omibranch-luna.theme-variant-dark .install-platform-trigger > svg:last-child,
+.theme-key-omibranch-luna.theme-variant-dark .support-select-trigger > svg:last-child {
+  border-color: #0b0c0e;
+  background: linear-gradient(180deg, #555a62, #34373d);
+  color: #dfe3e8;
+}
+
+/* The purchase note is the yellow information bar. */
+.theme-key-omibranch-luna .subscription-purchase-description {
+  border: 1px solid #c9b46b;
+  border-radius: 3px;
+  background: var(--lw-balloon);
+  color: var(--lw-balloon-ink);
+  box-shadow: none;
+}
+
+.theme-key-omibranch-luna .subscription-purchase-description p {
+  color: var(--lw-balloon-ink);
+}
+
+/* ------------------------------------------------------------------ */
+/* Toasts are tray balloons                                            */
+/* ------------------------------------------------------------------ */
+
+body:has(.theme-key-omibranch-luna) .app-toast {
+  border: 1px solid #000000;
+  border-radius: 8px;
+  background: #ffffe1;
+  color: #000000;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.35);
+  font-family: Tahoma, "Luna UI", "Segoe UI", sans-serif;
+}
+
+/* ------------------------------------------------------------------ */
+/* Menus                                                               */
+/* ------------------------------------------------------------------ */
+
+body:has(.theme-key-omibranch-luna) .language-select-content,
+body:has(.theme-key-omibranch-luna) .install-platform-content,
+body:has(.theme-key-omibranch-luna) .support-select-content {
+  border: 1px solid #7f9db9;
+  border-radius: 0;
+  background: #ffffff;
+  color: #141414;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+body:has(.theme-key-omibranch-luna) .language-select-item[data-highlighted],
+body:has(.theme-key-omibranch-luna) .language-select-item[data-selected],
+body:has(.theme-key-omibranch-luna) .install-platform-item[data-highlighted],
+body:has(.theme-key-omibranch-luna) .install-platform-item[data-selected],
+body:has(.theme-key-omibranch-luna) .support-select-item[data-highlighted],
+body:has(.theme-key-omibranch-luna) .support-select-item[data-selected] {
+  border-radius: 0;
+  background: #316ac5;
+  color: #ffffff !important;
+}
+
+body:has(.theme-key-omibranch-luna.theme-variant-dark) .language-select-content,
+body:has(.theme-key-omibranch-luna.theme-variant-dark) .install-platform-content,
+body:has(.theme-key-omibranch-luna.theme-variant-dark) .support-select-content {
+  border-color: #000000;
+  background: #26282d;
+  color: #eef0f3;
+}
+
+/* ------------------------------------------------------------------ */
+/* Scrollbars (desktop)                                                */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna ::selection {
+  background: #316ac5;
+  color: #ffffff;
+}
+
+/* ------------------------------------------------------------------ */
+/* Desktop ink: text lying on the wallpaper is white like icon labels, */
+/* text inside windows and controls returns to window ink.            */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna {
+  --lw-ink-muted: #3c3c3c;
+  --lw-ink-dim: #5f5f5f;
+}
+
+.theme-key-omibranch-luna.theme-variant-dark {
+  --lw-ink-muted: #c3c8cf;
+  --lw-ink-dim: #979ea8;
+}
+
+.theme-key-omibranch-luna .phone-screen {
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.92);
+  --dim: rgba(255, 255, 255, 0.84);
+  color: #ffffff;
+  text-shadow: var(--lw-desktop-glow);
+}
+
+.theme-key-omibranch-luna :is(
+  .card,
+  .dialog-card,
+  .notification-preferences,
+  .btn,
+  .bottom-nav,
+  .period-card,
+  .method-card,
+  .option-row,
+  .settings-row,
+  .tariff-action-card,
+  .tariff-selected-card,
+  .tariff-warning-card,
+  .topup-carryover-note,
+  .subscription-purchase-description,
+  .install-platform-trigger,
+  .install-app-button,
+  .install-qr-wrap,
+  .install-loading,
+  .support-new-ticket-button,
+  .support-select-trigger,
+  .ticket-card,
+  .ticket-composer,
+  .language-select-trigger,
+  .payment-method-select-trigger,
+  input,
+  textarea,
+  select
+) {
+  --text: var(--lw-ink);
+  --muted: var(--lw-ink-muted);
+  --dim: var(--lw-ink-dim);
+  text-shadow: none;
+}
+
+.theme-key-omibranch-luna .phone-screen .btn-primary,
+.theme-key-omibranch-luna .phone-screen .bottom-nav button {
+  text-shadow: inherit;
+}
+
+.theme-key-omibranch-luna .card .btn-primary,
+.theme-key-omibranch-luna .phone-screen .btn-primary {
+  text-shadow: 1px 1px 2px rgba(0, 32, 0, 0.55);
+}
+
+.theme-key-omibranch-luna .phone-screen .bottom-nav button {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+}
+
+.theme-key-omibranch-luna .security-back,
+.theme-key-omibranch-luna .partner-back,
+.theme-key-omibranch-luna .auth-legal-intro,
+.theme-key-omibranch-luna .status-footer small {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.theme-key-omibranch-luna .phone-screen > :not(.card) a:not(.btn),
+.theme-key-omibranch-luna .auth-legal a {
+  color: #ffffff;
+  text-decoration-color: rgba(255, 255, 255, 0.7);
+}
+
+/* ------------------------------------------------------------------ */
+/* Window bars: titled windows get the full XP height, the rest a     */
+/* slimmer caption so an empty bar never looks like a missing title.  */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna .card,
+.theme-key-omibranch-luna .notification-preferences {
+  --lw-bar-h: 24px;
+}
+
+.theme-key-omibranch-luna .notification-preferences {
+  --lw-ico: url("icons/bell.webp");
+}
+
+.theme-key-omibranch-luna .card-compact {
+  --lw-bar-h-sm: 20px;
+}
+
+.theme-key-omibranch-luna .status-card,
+.theme-key-omibranch-luna .dialog-card {
+  --lw-bar-h: 28px;
+}
+
+.theme-key-omibranch-luna .home-balance-card,
+.theme-key-omibranch-luna .partner-balance-card { --lw-ico: url("icons/wallet.webp"); }
+.theme-key-omibranch-luna .home-compact-summary { --lw-ico: url("icons/shield.webp"); }
+.theme-key-omibranch-luna .auth-card { --lw-ico: url("icons/key.webp"); }
+.theme-key-omibranch-luna .install-subscription-card { --lw-ico: url("icons/qr.webp"); }
+.theme-key-omibranch-luna .partner-overview-card,
+.theme-key-omibranch-luna .partner-stats-card { --lw-ico: url("icons/handshake.webp"); }
+.theme-key-omibranch-luna .payment-history-heading { --lw-ico: url("icons/history.webp"); }
+.theme-key-omibranch-luna .security-card,
+.theme-key-omibranch-luna .security-overview-card { --lw-ico: url("icons/shield.webp"); }
+.theme-key-omibranch-luna .status-overview,
+.theme-key-omibranch-luna .status-group { --lw-ico: url("icons/server.webp"); }
+
+/* The status check becomes the big green tick of a finished wizard. */
+.theme-key-omibranch-luna .sub-status > svg:first-child {
+  width: 32px;
+  height: 32px;
+  background: url("icons/check.webp") 50% 50% / contain no-repeat;
+  color: transparent;
+  stroke: transparent;
+}
+
+.theme-key-omibranch-luna .sub-status > svg:first-child * {
+  stroke: transparent !important;
+  fill: transparent !important;
+}
+
+.theme-key-omibranch-luna .status-card-inactive .sub-status > svg:first-child {
+  background-image: url("icons/error.webp");
+}
+
+.theme-key-omibranch-luna .status-card-inactive h2 {
+  color: var(--danger-text);
+}
+
+/* ------------------------------------------------------------------ */
+/* Control Panel rows                                                  */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna .settings-row {
+  border: 1px solid var(--lw-group);
+  border-radius: 4px;
+  background: var(--lw-window);
+  color: var(--lw-ink);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.55) inset, 0 3px 10px rgba(8, 30, 92, 0.18);
+}
+
+.theme-key-omibranch-luna.theme-variant-dark .settings-row {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 3px 12px rgba(0, 0, 0, 0.45);
+}
+
+.theme-key-omibranch-luna button.settings-row:hover:not(:disabled),
+.theme-key-omibranch-luna a.settings-row:hover {
+  border-color: var(--accent);
+  background: var(--lw-select-soft);
+}
+
+.theme-key-omibranch-luna .settings-row > svg:first-child {
+  width: 26px;
+  height: 26px;
+}
+
+/* A select living inside a row is the row itself, not a text field. */
+.theme-key-omibranch-luna .settings-row.language-select-trigger,
+.theme-key-omibranch-luna .settings-row .language-select-trigger,
+.theme-key-omibranch-luna .language-select-trigger.settings-row {
+  border-color: var(--lw-group);
+  background: transparent;
+}
+
+.theme-key-omibranch-luna .settings-row .language-select-trigger {
+  border: 0;
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Switches: a sunken track with a raised XP bead                      */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna button[role="switch"] {
+  border: 1px solid var(--lw-field-border);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #d8d6cb 0%, #f3f2ec 100%);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.theme-key-omibranch-luna button[role="switch"][data-state="checked"] {
+  border-color: var(--lw-start-border);
+  background: var(--lw-start);
+  box-shadow: inset 0 1px 2px rgba(0, 40, 0, 0.35);
+}
+
+.theme-key-omibranch-luna button[role="switch"] > span {
+  border: 1px solid #6e7f99;
+  background: linear-gradient(180deg, #ffffff 0%, #f1f1ec 55%, #d9d6cb 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.theme-key-omibranch-luna.theme-variant-dark button[role="switch"] {
+  background: linear-gradient(180deg, #0f1012 0%, #24262a 100%);
+}
+
+.theme-key-omibranch-luna.theme-variant-dark button[role="switch"] > span {
+  border-color: #0b0c0e;
+  background: linear-gradient(180deg, #7c818a 0%, #555a62 55%, #3d4047 100%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Install guide, support, tabs                                        */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna .install-app-button {
+  border: 1px solid var(--lw-group);
+  border-radius: 4px;
+  background: var(--lw-window);
+  color: var(--lw-ink);
+  box-shadow: 0 2px 8px rgba(8, 30, 92, 0.2);
+  transform: none;
+}
+
+.theme-key-omibranch-luna .install-app-button:hover:not(:disabled) {
+  border-color: #e5a01a;
+  box-shadow: inset 0 0 0 1px #fbc761, 0 2px 8px rgba(8, 30, 92, 0.2);
+  transform: none;
+}
+
+.theme-key-omibranch-luna .install-app-button.active,
+.theme-key-omibranch-luna .install-app-button.active:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--lw-select-soft);
+  color: var(--lw-ink);
+  box-shadow: inset 0 0 0 1px var(--accent), 0 2px 8px rgba(8, 30, 92, 0.2);
+}
+
+.theme-key-omibranch-luna .install-step-icon,
+.theme-key-omibranch-luna .install-subscription-header-icon,
+.theme-key-omibranch-luna .status-overview-icon {
+  border: 1px solid var(--lw-group);
+  border-radius: 4px;
+  background: var(--lw-window-2);
+}
+
+.theme-key-omibranch-luna .support-status-tabs-list {
+  border: 1px solid var(--lw-group);
+  border-radius: 4px;
+  background: var(--lw-window-2);
+}
+
+.theme-key-omibranch-luna .support-status-tabs-trigger[data-state="active"] {
+  border: 1px solid var(--lw-group);
+  border-bottom-color: transparent;
+  background: var(--lw-field);
+  box-shadow: inset 0 2px 0 #e5a01a;
+}
+
+.theme-key-omibranch-luna .ticket-card {
+  border: 1px solid var(--lw-group);
+  border-radius: 4px;
+  background: var(--lw-field);
+  box-shadow: none;
+}
+
+.theme-key-omibranch-luna .ticket-card:hover {
+  border-color: var(--accent);
+  background: var(--lw-select-soft);
+}
+
+.theme-key-omibranch-luna .ticket-message-row--outgoing {
+  --ticket-bubble-bg: #ffffe1;
+  --ticket-bubble-border: #c9b46b;
+  --ticket-bubble-text: #141414;
+}
+
+/* ------------------------------------------------------------------ */
+/* Start menu: full-bleed header with the shop's picture, Log Off bar  */
+/* ------------------------------------------------------------------ */
+
+@media (min-width: 1024px) {
+  .theme-key-omibranch-luna .bottom-nav {
+    --text: var(--lw-ink);
+    --muted: var(--lw-ink-muted);
+  }
+
+  .theme-key-omibranch-luna .bottom-nav .rail-brand {
+    box-sizing: border-box;
+    width: calc(100% + 29px);
+    max-width: none;
+    margin: -28px -15px 10px -14px;
+    padding: 30px 16px 14px;
+    border-radius: 0;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav .rail-brand .brand-mark {
+    width: 42px;
+    height: 42px;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav .rail-brand strong {
+    font-size: 16px;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: var(--desktop-rail-width, 252px);
+    height: 40px;
+    pointer-events: none;
+    background: var(--lw-bar);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 2px 0 #e8a33d;
+  }
+
+  .theme-key-omibranch-luna.theme-variant-dark .bottom-nav::after {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 2px 0 #3a7d2c;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button {
+    border-radius: 3px;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button:hover .bottom-nav-label,
+  .theme-key-omibranch-luna .bottom-nav button.active .bottom-nav-label {
+    color: #ffffff;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Desktop scrollbars                                                  */
+/* ------------------------------------------------------------------ */
+
+@media (hover: hover) and (pointer: fine) {
+  .theme-key-omibranch-luna ::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+
+  .theme-key-omibranch-luna ::-webkit-scrollbar-track {
+    background: #f4f3ee;
+    box-shadow: inset 1px 0 0 #e1dfd2;
+  }
+
+  .theme-key-omibranch-luna ::-webkit-scrollbar-thumb {
+    border: 1px solid #fff;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #c9d8fc 0%, #b8cbf8 50%, #a9bff4 100%);
+    box-shadow: inset 0 0 0 1px #8fa9e6;
+  }
+
+  .theme-key-omibranch-luna.theme-variant-dark ::-webkit-scrollbar-track {
+    background: #1b1d21;
+    box-shadow: none;
+  }
+
+  .theme-key-omibranch-luna.theme-variant-dark ::-webkit-scrollbar-thumb {
+    border-color: #0b0c0e;
+    background: linear-gradient(90deg, #4c5058 0%, #3b3e45 100%);
+    box-shadow: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Motion: XP windows do not float; reduced motion keeps it all still */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-key-omibranch-luna * {
+    transition: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Checkboxes: the white XP box with a green tick                      */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna .ui-checkbox,
+.theme-key-omibranch-luna .ui-checkbox[data-state="checked"],
+.theme-key-omibranch-luna .ui-checkbox[data-state="indeterminate"] {
+  border: 1px solid #1c5180;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #dcdcd7 0%, #f3f3ef 45%, #ffffff 100%);
+  color: #21a121;
+  box-shadow: none;
+}
+
+.theme-key-omibranch-luna .ui-checkbox:hover {
+  border-color: #1c5180;
+  box-shadow: inset 0 0 0 2px #fbc761;
+}
+
+.theme-key-omibranch-luna .ui-checkbox svg {
+  color: #21a121;
+  stroke: #21a121;
+}
+
+.theme-key-omibranch-luna.theme-variant-dark .ui-checkbox,
+.theme-key-omibranch-luna.theme-variant-dark .ui-checkbox[data-state="checked"],
+.theme-key-omibranch-luna.theme-variant-dark .ui-checkbox[data-state="indeterminate"] {
+  border-color: #6a717c;
+  background: linear-gradient(135deg, #0f1012 0%, #1d1f23 100%);
+  color: #5cc24c;
+}
+
+.theme-key-omibranch-luna.theme-variant-dark .ui-checkbox svg {
+  color: #5cc24c;
+  stroke: #5cc24c;
+}
+
+/* ------------------------------------------------------------------ */
+/* XP icons over the app's line glyphs (generated by build_css.py)     */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna svg.lucide-house,
+.theme-key-omibranch-luna svg.lucide-home,
+.theme-key-omibranch-luna svg.lucide-house-plus {
+  --lw-glyph: url("icons/home.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-gift {
+  --lw-glyph: url("icons/gift.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-smartphone,
+.theme-key-omibranch-luna svg.lucide-tablet-smartphone {
+  --lw-glyph: url("icons/smartphone.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-tablet {
+  --lw-glyph: url("icons/tablet.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-laptop,
+.theme-key-omibranch-luna svg.lucide-laptop-minimal {
+  --lw-glyph: url("icons/laptop.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-monitor,
+.theme-key-omibranch-luna svg.lucide-monitor-smartphone,
+.theme-key-omibranch-luna svg.lucide-tv,
+.theme-key-omibranch-luna svg.lucide-tv-minimal {
+  --lw-glyph: url("icons/monitor.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-life-buoy,
+.theme-key-omibranch-luna svg.lucide-lifebuoy {
+  --lw-glyph: url("icons/lifebuoy.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-settings,
+.theme-key-omibranch-luna svg.lucide-settings-2,
+.theme-key-omibranch-luna svg.lucide-sliders,
+.theme-key-omibranch-luna svg.lucide-sliders-horizontal,
+.theme-key-omibranch-luna svg.lucide-cog {
+  --lw-glyph: url("icons/gears.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-credit-card,
+.theme-key-omibranch-luna svg.lucide-credit-card-check,
+.theme-key-omibranch-luna svg.lucide-receipt,
+.theme-key-omibranch-luna svg.lucide-receipt-text {
+  --lw-glyph: url("icons/card.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-wallet,
+.theme-key-omibranch-luna svg.lucide-wallet-cards,
+.theme-key-omibranch-luna svg.lucide-wallet-minimal,
+.theme-key-omibranch-luna svg.lucide-piggy-bank,
+.theme-key-omibranch-luna svg.lucide-banknote,
+.theme-key-omibranch-luna svg.lucide-coins {
+  --lw-glyph: url("icons/wallet.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-download,
+.theme-key-omibranch-luna svg.lucide-hard-drive-download,
+.theme-key-omibranch-luna svg.lucide-cloud-download {
+  --lw-glyph: url("icons/download.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-repeat,
+.theme-key-omibranch-luna svg.lucide-repeat-2,
+.theme-key-omibranch-luna svg.lucide-refresh-cw,
+.theme-key-omibranch-luna svg.lucide-refresh-ccw,
+.theme-key-omibranch-luna svg.lucide-rotate-cw,
+.theme-key-omibranch-luna svg.lucide-rotate-ccw,
+.theme-key-omibranch-luna svg.lucide-arrow-left-right {
+  --lw-glyph: url("icons/refresh.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-shield,
+.theme-key-omibranch-luna svg.lucide-shield-check,
+.theme-key-omibranch-luna svg.lucide-shield-half,
+.theme-key-omibranch-luna svg.lucide-shield-user,
+.theme-key-omibranch-luna svg.lucide-fingerprint {
+  --lw-glyph: url("icons/shield.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-lock,
+.theme-key-omibranch-luna svg.lucide-lock-keyhole,
+.theme-key-omibranch-luna svg.lucide-key-round {
+  --lw-glyph: url("icons/lock.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-megaphone,
+.theme-key-omibranch-luna svg.lucide-bell-ring {
+  --lw-glyph: url("icons/megaphone.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-handshake,
+.theme-key-omibranch-luna svg.lucide-hand-coins {
+  --lw-glyph: url("icons/handshake.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-info,
+.theme-key-omibranch-luna svg.lucide-badge-info {
+  --lw-glyph: url("icons/info.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-triangle-alert,
+.theme-key-omibranch-luna svg.lucide-alert-triangle,
+.theme-key-omibranch-luna svg.lucide-circle-alert,
+.theme-key-omibranch-luna svg.lucide-octagon-alert {
+  --lw-glyph: url("icons/warning.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-circle-x,
+.theme-key-omibranch-luna svg.lucide-x-circle,
+.theme-key-omibranch-luna svg.lucide-ban,
+.theme-key-omibranch-luna svg.lucide-octagon-x {
+  --lw-glyph: url("icons/error.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-globe,
+.theme-key-omibranch-luna svg.lucide-globe-2,
+.theme-key-omibranch-luna svg.lucide-earth,
+.theme-key-omibranch-luna svg.lucide-languages,
+.theme-key-omibranch-luna svg.lucide-map-pin,
+.theme-key-omibranch-luna svg.lucide-map {
+  --lw-glyph: url("icons/globe.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-paintbrush,
+.theme-key-omibranch-luna svg.lucide-paintbrush-vertical,
+.theme-key-omibranch-luna svg.lucide-palette,
+.theme-key-omibranch-luna svg.lucide-brush,
+.theme-key-omibranch-luna svg.lucide-swatch-book {
+  --lw-glyph: url("icons/palette.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-file-text,
+.theme-key-omibranch-luna svg.lucide-file,
+.theme-key-omibranch-luna svg.lucide-scroll-text,
+.theme-key-omibranch-luna svg.lucide-scroll,
+.theme-key-omibranch-luna svg.lucide-book-open,
+.theme-key-omibranch-luna svg.lucide-notebook-text,
+.theme-key-omibranch-luna svg.lucide-clipboard-list {
+  --lw-glyph: url("icons/document.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-server,
+.theme-key-omibranch-luna svg.lucide-database,
+.theme-key-omibranch-luna svg.lucide-hard-drive,
+.theme-key-omibranch-luna svg.lucide-activity {
+  --lw-glyph: url("icons/server.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-user,
+.theme-key-omibranch-luna svg.lucide-user-round,
+.theme-key-omibranch-luna svg.lucide-circle-user,
+.theme-key-omibranch-luna svg.lucide-circle-user-round,
+.theme-key-omibranch-luna svg.lucide-contact {
+  --lw-glyph: url("icons/user.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-users,
+.theme-key-omibranch-luna svg.lucide-users-round,
+.theme-key-omibranch-luna svg.lucide-user-plus,
+.theme-key-omibranch-luna svg.lucide-user-round-plus {
+  --lw-glyph: url("icons/users.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-key,
+.theme-key-omibranch-luna svg.lucide-key-square {
+  --lw-glyph: url("icons/key.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-copy,
+.theme-key-omibranch-luna svg.lucide-clipboard,
+.theme-key-omibranch-luna svg.lucide-clipboard-copy,
+.theme-key-omibranch-luna svg.lucide-files {
+  --lw-glyph: url("icons/copy.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-mail,
+.theme-key-omibranch-luna svg.lucide-mails,
+.theme-key-omibranch-luna svg.lucide-at-sign,
+.theme-key-omibranch-luna svg.lucide-send,
+.theme-key-omibranch-luna svg.lucide-inbox {
+  --lw-glyph: url("icons/mail.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-message-square,
+.theme-key-omibranch-luna svg.lucide-message-circle,
+.theme-key-omibranch-luna svg.lucide-messages-square,
+.theme-key-omibranch-luna svg.lucide-message-square-plus,
+.theme-key-omibranch-luna svg.lucide-message-square-text,
+.theme-key-omibranch-luna svg.lucide-headset {
+  --lw-glyph: url("icons/chat.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-circle-question-mark,
+.theme-key-omibranch-luna svg.lucide-circle-help,
+.theme-key-omibranch-luna svg.lucide-help-circle,
+.theme-key-omibranch-luna svg.lucide-badge-help {
+  --lw-glyph: url("icons/help.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-calendar,
+.theme-key-omibranch-luna svg.lucide-calendar-days,
+.theme-key-omibranch-luna svg.lucide-calendar-clock,
+.theme-key-omibranch-luna svg.lucide-calendar-check {
+  --lw-glyph: url("icons/calendar.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-trash,
+.theme-key-omibranch-luna svg.lucide-trash-2 {
+  --lw-glyph: url("icons/trash.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-tag,
+.theme-key-omibranch-luna svg.lucide-tags,
+.theme-key-omibranch-luna svg.lucide-ticket,
+.theme-key-omibranch-luna svg.lucide-ticket-percent,
+.theme-key-omibranch-luna svg.lucide-percent,
+.theme-key-omibranch-luna svg.lucide-badge-percent {
+  --lw-glyph: url("icons/tag.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-star,
+.theme-key-omibranch-luna svg.lucide-sparkles,
+.theme-key-omibranch-luna svg.lucide-crown,
+.theme-key-omibranch-luna svg.lucide-award {
+  --lw-glyph: url("icons/star.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-plus,
+.theme-key-omibranch-luna svg.lucide-circle-plus,
+.theme-key-omibranch-luna svg.lucide-plus-circle {
+  --lw-glyph: url("icons/plus.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-circle-check,
+.theme-key-omibranch-luna svg.lucide-circle-check-big,
+.theme-key-omibranch-luna svg.lucide-check-circle,
+.theme-key-omibranch-luna svg.lucide-check-circle-2,
+.theme-key-omibranch-luna svg.lucide-badge-check {
+  --lw-glyph: url("icons/check.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-log-out,
+.theme-key-omibranch-luna svg.lucide-door-open {
+  --lw-glyph: url("icons/logout.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-external-link,
+.theme-key-omibranch-luna svg.lucide-square-arrow-out-up-right,
+.theme-key-omibranch-luna svg.lucide-link,
+.theme-key-omibranch-luna svg.lucide-link-2,
+.theme-key-omibranch-luna svg.lucide-share,
+.theme-key-omibranch-luna svg.lucide-share-2 {
+  --lw-glyph: url("icons/external.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-bell,
+.theme-key-omibranch-luna svg.lucide-bell-dot {
+  --lw-glyph: url("icons/bell.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-history,
+.theme-key-omibranch-luna svg.lucide-rotate-ccw-clock,
+.theme-key-omibranch-luna svg.lucide-clock,
+.theme-key-omibranch-luna svg.lucide-timer,
+.theme-key-omibranch-luna svg.lucide-hourglass {
+  --lw-glyph: url("icons/history.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-satellite-dish,
+.theme-key-omibranch-luna svg.lucide-satellite,
+.theme-key-omibranch-luna svg.lucide-radio-tower,
+.theme-key-omibranch-luna svg.lucide-rocket {
+  --lw-glyph: url("icons/satellite.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-arrow-down-up,
+.theme-key-omibranch-luna svg.lucide-arrow-up-down,
+.theme-key-omibranch-luna svg.lucide-chart-no-axes-column,
+.theme-key-omibranch-luna svg.lucide-gauge {
+  --lw-glyph: url("icons/updown.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-pencil,
+.theme-key-omibranch-luna svg.lucide-pen,
+.theme-key-omibranch-luna svg.lucide-square-pen,
+.theme-key-omibranch-luna svg.lucide-pen-line {
+  --lw-glyph: url("icons/pencil.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-qr-code,
+.theme-key-omibranch-luna svg.lucide-scan-line,
+.theme-key-omibranch-luna svg.lucide-scan {
+  --lw-glyph: url("icons/qr.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-zap,
+.theme-key-omibranch-luna svg.lucide-bolt {
+  --lw-glyph: url("icons/bolt.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-heart,
+.theme-key-omibranch-luna svg.lucide-heart-handshake {
+  --lw-glyph: url("icons/heart.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-moon,
+.theme-key-omibranch-luna svg.lucide-moon-star {
+  --lw-glyph: url("icons/moon.webp");
+}
+
+.theme-key-omibranch-luna svg.lucide-sun,
+.theme-key-omibranch-luna svg.lucide-sun-moon {
+  --lw-glyph: url("icons/sun.webp");
+}
+
+.theme-key-omibranch-luna :is(
+  svg.lucide-house,
+  svg.lucide-home,
+  svg.lucide-house-plus,
+  svg.lucide-gift,
+  svg.lucide-smartphone,
+  svg.lucide-tablet-smartphone,
+  svg.lucide-tablet,
+  svg.lucide-laptop,
+  svg.lucide-laptop-minimal,
+  svg.lucide-monitor,
+  svg.lucide-monitor-smartphone,
+  svg.lucide-tv,
+  svg.lucide-tv-minimal,
+  svg.lucide-life-buoy,
+  svg.lucide-lifebuoy,
+  svg.lucide-settings,
+  svg.lucide-settings-2,
+  svg.lucide-sliders,
+  svg.lucide-sliders-horizontal,
+  svg.lucide-cog,
+  svg.lucide-credit-card,
+  svg.lucide-credit-card-check,
+  svg.lucide-receipt,
+  svg.lucide-receipt-text,
+  svg.lucide-wallet,
+  svg.lucide-wallet-cards,
+  svg.lucide-wallet-minimal,
+  svg.lucide-piggy-bank,
+  svg.lucide-banknote,
+  svg.lucide-coins,
+  svg.lucide-download,
+  svg.lucide-hard-drive-download,
+  svg.lucide-cloud-download,
+  svg.lucide-repeat,
+  svg.lucide-repeat-2,
+  svg.lucide-refresh-cw,
+  svg.lucide-refresh-ccw,
+  svg.lucide-rotate-cw,
+  svg.lucide-rotate-ccw,
+  svg.lucide-arrow-left-right,
+  svg.lucide-shield,
+  svg.lucide-shield-check,
+  svg.lucide-shield-half,
+  svg.lucide-shield-user,
+  svg.lucide-fingerprint,
+  svg.lucide-lock,
+  svg.lucide-lock-keyhole,
+  svg.lucide-key-round,
+  svg.lucide-megaphone,
+  svg.lucide-bell-ring,
+  svg.lucide-handshake,
+  svg.lucide-hand-coins,
+  svg.lucide-info,
+  svg.lucide-badge-info,
+  svg.lucide-triangle-alert,
+  svg.lucide-alert-triangle,
+  svg.lucide-circle-alert,
+  svg.lucide-octagon-alert,
+  svg.lucide-circle-x,
+  svg.lucide-x-circle,
+  svg.lucide-ban,
+  svg.lucide-octagon-x,
+  svg.lucide-globe,
+  svg.lucide-globe-2,
+  svg.lucide-earth,
+  svg.lucide-languages,
+  svg.lucide-map-pin,
+  svg.lucide-map,
+  svg.lucide-paintbrush,
+  svg.lucide-paintbrush-vertical,
+  svg.lucide-palette,
+  svg.lucide-brush,
+  svg.lucide-swatch-book,
+  svg.lucide-file-text,
+  svg.lucide-file,
+  svg.lucide-scroll-text,
+  svg.lucide-scroll,
+  svg.lucide-book-open,
+  svg.lucide-notebook-text,
+  svg.lucide-clipboard-list,
+  svg.lucide-server,
+  svg.lucide-database,
+  svg.lucide-hard-drive,
+  svg.lucide-activity,
+  svg.lucide-user,
+  svg.lucide-user-round,
+  svg.lucide-circle-user,
+  svg.lucide-circle-user-round,
+  svg.lucide-contact,
+  svg.lucide-users,
+  svg.lucide-users-round,
+  svg.lucide-user-plus,
+  svg.lucide-user-round-plus,
+  svg.lucide-key,
+  svg.lucide-key-square,
+  svg.lucide-copy,
+  svg.lucide-clipboard,
+  svg.lucide-clipboard-copy,
+  svg.lucide-files,
+  svg.lucide-mail,
+  svg.lucide-mails,
+  svg.lucide-at-sign,
+  svg.lucide-send,
+  svg.lucide-inbox,
+  svg.lucide-message-square,
+  svg.lucide-message-circle,
+  svg.lucide-messages-square,
+  svg.lucide-message-square-plus,
+  svg.lucide-message-square-text,
+  svg.lucide-headset,
+  svg.lucide-circle-question-mark,
+  svg.lucide-circle-help,
+  svg.lucide-help-circle,
+  svg.lucide-badge-help,
+  svg.lucide-calendar,
+  svg.lucide-calendar-days,
+  svg.lucide-calendar-clock,
+  svg.lucide-calendar-check,
+  svg.lucide-trash,
+  svg.lucide-trash-2,
+  svg.lucide-tag,
+  svg.lucide-tags,
+  svg.lucide-ticket,
+  svg.lucide-ticket-percent,
+  svg.lucide-percent,
+  svg.lucide-badge-percent,
+  svg.lucide-star,
+  svg.lucide-sparkles,
+  svg.lucide-crown,
+  svg.lucide-award,
+  svg.lucide-plus,
+  svg.lucide-circle-plus,
+  svg.lucide-plus-circle,
+  svg.lucide-circle-check,
+  svg.lucide-circle-check-big,
+  svg.lucide-check-circle,
+  svg.lucide-check-circle-2,
+  svg.lucide-badge-check,
+  svg.lucide-log-out,
+  svg.lucide-door-open,
+  svg.lucide-external-link,
+  svg.lucide-square-arrow-out-up-right,
+  svg.lucide-link,
+  svg.lucide-link-2,
+  svg.lucide-share,
+  svg.lucide-share-2,
+  svg.lucide-bell,
+  svg.lucide-bell-dot,
+  svg.lucide-history,
+  svg.lucide-rotate-ccw-clock,
+  svg.lucide-clock,
+  svg.lucide-timer,
+  svg.lucide-hourglass,
+  svg.lucide-satellite-dish,
+  svg.lucide-satellite,
+  svg.lucide-radio-tower,
+  svg.lucide-rocket,
+  svg.lucide-arrow-down-up,
+  svg.lucide-arrow-up-down,
+  svg.lucide-chart-no-axes-column,
+  svg.lucide-gauge,
+  svg.lucide-pencil,
+  svg.lucide-pen,
+  svg.lucide-square-pen,
+  svg.lucide-pen-line,
+  svg.lucide-qr-code,
+  svg.lucide-scan-line,
+  svg.lucide-scan,
+  svg.lucide-zap,
+  svg.lucide-bolt,
+  svg.lucide-heart,
+  svg.lucide-heart-handshake,
+  svg.lucide-moon,
+  svg.lucide-moon-star,
+  svg.lucide-sun,
+  svg.lucide-sun-moon
+) {
+  flex: 0 0 auto;
+  background: var(--lw-glyph) 50% 50% / contain no-repeat;
+  color: transparent !important;
+  stroke: transparent !important;
+  fill: transparent !important;
+  filter: none !important;
+}
+
+.theme-key-omibranch-luna :is(
+  svg.lucide-house,
+  svg.lucide-home,
+  svg.lucide-house-plus,
+  svg.lucide-gift,
+  svg.lucide-smartphone,
+  svg.lucide-tablet-smartphone,
+  svg.lucide-tablet,
+  svg.lucide-laptop,
+  svg.lucide-laptop-minimal,
+  svg.lucide-monitor,
+  svg.lucide-monitor-smartphone,
+  svg.lucide-tv,
+  svg.lucide-tv-minimal,
+  svg.lucide-life-buoy,
+  svg.lucide-lifebuoy,
+  svg.lucide-settings,
+  svg.lucide-settings-2,
+  svg.lucide-sliders,
+  svg.lucide-sliders-horizontal,
+  svg.lucide-cog,
+  svg.lucide-credit-card,
+  svg.lucide-credit-card-check,
+  svg.lucide-receipt,
+  svg.lucide-receipt-text,
+  svg.lucide-wallet,
+  svg.lucide-wallet-cards,
+  svg.lucide-wallet-minimal,
+  svg.lucide-piggy-bank,
+  svg.lucide-banknote,
+  svg.lucide-coins,
+  svg.lucide-download,
+  svg.lucide-hard-drive-download,
+  svg.lucide-cloud-download,
+  svg.lucide-repeat,
+  svg.lucide-repeat-2,
+  svg.lucide-refresh-cw,
+  svg.lucide-refresh-ccw,
+  svg.lucide-rotate-cw,
+  svg.lucide-rotate-ccw,
+  svg.lucide-arrow-left-right,
+  svg.lucide-shield,
+  svg.lucide-shield-check,
+  svg.lucide-shield-half,
+  svg.lucide-shield-user,
+  svg.lucide-fingerprint,
+  svg.lucide-lock,
+  svg.lucide-lock-keyhole,
+  svg.lucide-key-round,
+  svg.lucide-megaphone,
+  svg.lucide-bell-ring,
+  svg.lucide-handshake,
+  svg.lucide-hand-coins,
+  svg.lucide-info,
+  svg.lucide-badge-info,
+  svg.lucide-triangle-alert,
+  svg.lucide-alert-triangle,
+  svg.lucide-circle-alert,
+  svg.lucide-octagon-alert,
+  svg.lucide-circle-x,
+  svg.lucide-x-circle,
+  svg.lucide-ban,
+  svg.lucide-octagon-x,
+  svg.lucide-globe,
+  svg.lucide-globe-2,
+  svg.lucide-earth,
+  svg.lucide-languages,
+  svg.lucide-map-pin,
+  svg.lucide-map,
+  svg.lucide-paintbrush,
+  svg.lucide-paintbrush-vertical,
+  svg.lucide-palette,
+  svg.lucide-brush,
+  svg.lucide-swatch-book,
+  svg.lucide-file-text,
+  svg.lucide-file,
+  svg.lucide-scroll-text,
+  svg.lucide-scroll,
+  svg.lucide-book-open,
+  svg.lucide-notebook-text,
+  svg.lucide-clipboard-list,
+  svg.lucide-server,
+  svg.lucide-database,
+  svg.lucide-hard-drive,
+  svg.lucide-activity,
+  svg.lucide-user,
+  svg.lucide-user-round,
+  svg.lucide-circle-user,
+  svg.lucide-circle-user-round,
+  svg.lucide-contact,
+  svg.lucide-users,
+  svg.lucide-users-round,
+  svg.lucide-user-plus,
+  svg.lucide-user-round-plus,
+  svg.lucide-key,
+  svg.lucide-key-square,
+  svg.lucide-copy,
+  svg.lucide-clipboard,
+  svg.lucide-clipboard-copy,
+  svg.lucide-files,
+  svg.lucide-mail,
+  svg.lucide-mails,
+  svg.lucide-at-sign,
+  svg.lucide-send,
+  svg.lucide-inbox,
+  svg.lucide-message-square,
+  svg.lucide-message-circle,
+  svg.lucide-messages-square,
+  svg.lucide-message-square-plus,
+  svg.lucide-message-square-text,
+  svg.lucide-headset,
+  svg.lucide-circle-question-mark,
+  svg.lucide-circle-help,
+  svg.lucide-help-circle,
+  svg.lucide-badge-help,
+  svg.lucide-calendar,
+  svg.lucide-calendar-days,
+  svg.lucide-calendar-clock,
+  svg.lucide-calendar-check,
+  svg.lucide-trash,
+  svg.lucide-trash-2,
+  svg.lucide-tag,
+  svg.lucide-tags,
+  svg.lucide-ticket,
+  svg.lucide-ticket-percent,
+  svg.lucide-percent,
+  svg.lucide-badge-percent,
+  svg.lucide-star,
+  svg.lucide-sparkles,
+  svg.lucide-crown,
+  svg.lucide-award,
+  svg.lucide-plus,
+  svg.lucide-circle-plus,
+  svg.lucide-plus-circle,
+  svg.lucide-circle-check,
+  svg.lucide-circle-check-big,
+  svg.lucide-check-circle,
+  svg.lucide-check-circle-2,
+  svg.lucide-badge-check,
+  svg.lucide-log-out,
+  svg.lucide-door-open,
+  svg.lucide-external-link,
+  svg.lucide-square-arrow-out-up-right,
+  svg.lucide-link,
+  svg.lucide-link-2,
+  svg.lucide-share,
+  svg.lucide-share-2,
+  svg.lucide-bell,
+  svg.lucide-bell-dot,
+  svg.lucide-history,
+  svg.lucide-rotate-ccw-clock,
+  svg.lucide-clock,
+  svg.lucide-timer,
+  svg.lucide-hourglass,
+  svg.lucide-satellite-dish,
+  svg.lucide-satellite,
+  svg.lucide-radio-tower,
+  svg.lucide-rocket,
+  svg.lucide-arrow-down-up,
+  svg.lucide-arrow-up-down,
+  svg.lucide-chart-no-axes-column,
+  svg.lucide-gauge,
+  svg.lucide-pencil,
+  svg.lucide-pen,
+  svg.lucide-square-pen,
+  svg.lucide-pen-line,
+  svg.lucide-qr-code,
+  svg.lucide-scan-line,
+  svg.lucide-scan,
+  svg.lucide-zap,
+  svg.lucide-bolt,
+  svg.lucide-heart,
+  svg.lucide-heart-handshake,
+  svg.lucide-moon,
+  svg.lucide-moon-star,
+  svg.lucide-sun,
+  svg.lucide-sun-moon
+) * {
+  stroke: transparent !important;
+  fill: transparent !important;
+}
+
+.theme-key-omibranch-luna .checkout-tariff-limit-icon svg[class*="lucide"],
+.theme-key-omibranch-luna .tariff-limit-badge svg[class*="lucide"],
+.theme-key-omibranch-luna .dialog-close-button svg[class*="lucide"],
+.theme-key-omibranch-luna .checkout-addon-value svg[class*="lucide"],
+.theme-key-omibranch-luna .ticket-badges svg[class*="lucide"],
+.theme-key-omibranch-luna .traffic-summary-row .premium-server-help-icon svg[class*="lucide"] {
+  background: none !important;
+  color: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.theme-key-omibranch-luna .checkout-tariff-limit-icon svg[class*="lucide"] *,
+.theme-key-omibranch-luna .tariff-limit-badge svg[class*="lucide"] *,
+.theme-key-omibranch-luna .dialog-close-button svg[class*="lucide"] *,
+.theme-key-omibranch-luna .checkout-addon-value svg[class*="lucide"] *,
+.theme-key-omibranch-luna .ticket-badges svg[class*="lucide"] *,
+.theme-key-omibranch-luna .traffic-summary-row .premium-server-help-icon svg[class*="lucide"] * {
+  stroke: currentColor !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* v1.1 · Minishop logo (icon + wordmark), light and dark              */
+/* The format has no logo-image token, so the logo is theme CSS: the   */
+/* shop's brand mark is replaced by the bundled icon and the name by a  */
+/* two-colour wordmark. Assets: icons/minishop-logo-{light,dark}.webp.  */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna {
+  --lw-logo: url("icons/minishop-logo-light.webp");
+  --lw-wm-1: #ffffff;
+  --lw-wm-2: #ffb43a;
+  --lw-wm-shadow: 1px 1px 0 #0a1f73, 0 2px 7px rgba(0, 10, 70, 0.55);
+}
+
+.theme-key-omibranch-luna.theme-variant-dark {
+  --lw-logo: url("icons/minishop-logo-dark.webp");
+  --lw-wm-1: #f2f4f7;
+  --lw-wm-2: #7fe06a;
+  --lw-wm-shadow: 1px 1px 0 #000000, 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.theme-key-omibranch-luna .brand-mark,
+.theme-key-omibranch-luna .bottom-nav .rail-brand .brand-mark {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--lw-logo) 50% 50% / contain no-repeat !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 2px 3px rgba(0, 10, 60, 0.45));
+}
+
+.theme-key-omibranch-luna .brand-mark img {
+  opacity: 0 !important;
+}
+
+.theme-key-omibranch-luna :is(
+  .login-brand h1,
+  .home-brand h1,
+  .bottom-nav .rail-brand strong,
+  .app-header .brand-row strong,
+  .accent-title .brand-row strong
+) {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-top: 0;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-shadow: none !important;
+}
+
+.theme-key-omibranch-luna :is(
+  .login-brand h1,
+  .home-brand h1,
+  .bottom-nav .rail-brand strong,
+  .app-header .brand-row strong,
+  .accent-title .brand-row strong
+)::before,
+.theme-key-omibranch-luna :is(
+  .login-brand h1,
+  .home-brand h1,
+  .bottom-nav .rail-brand strong,
+  .app-header .brand-row strong,
+  .accent-title .brand-row strong
+)::after {
+  font-family: var(--font-logo);
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-shadow: var(--lw-wm-shadow);
+}
+
+.theme-key-omibranch-luna :is(.login-brand h1, .home-brand h1, .bottom-nav .rail-brand strong, .app-header .brand-row strong, .accent-title .brand-row strong)::before {
+  content: "Mini";
+  color: var(--lw-wm-1);
+}
+
+.theme-key-omibranch-luna :is(.login-brand h1, .home-brand h1, .bottom-nav .rail-brand strong, .app-header .brand-row strong, .accent-title .brand-row strong)::after {
+  content: "shop";
+  color: var(--lw-wm-2);
+}
+
+.theme-key-omibranch-luna :is(.bottom-nav .rail-brand strong, .app-header .brand-row strong, .accent-title .brand-row strong)::before,
+.theme-key-omibranch-luna :is(.bottom-nav .rail-brand strong, .app-header .brand-row strong, .accent-title .brand-row strong)::after {
+  font-size: 22px;
+}
+
+@media (min-width: 1024px) {
+  .theme-key-omibranch-luna .bottom-nav .rail-brand .brand-mark {
+    width: 52px;
+    height: 52px;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav .rail-brand {
+    gap: 8px;
+  }
+
+  .theme-key-omibranch-luna :is(.login-brand h1, .home-brand h1)::before,
+  .theme-key-omibranch-luna :is(.login-brand h1, .home-brand h1)::after {
+    font-size: 44px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* v1.1 · Start button: readable on any patch of lawn                  */
+/* Dark rim + white ring + soft dark halo; the ring only where the     */
+/* button sits directly on the wallpaper (inside windows it has a      */
+/* cream background already).                                          */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna {
+  --lw-start-halo: 0 0 0 2px rgba(255, 255, 255, 0.95), 0 0 0 3.5px rgba(5, 40, 8, 0.78), 0 6px 14px rgba(0, 25, 0, 0.55);
+}
+
+.theme-key-omibranch-luna.theme-variant-dark {
+  --lw-start-halo: 0 0 0 2px rgba(190, 245, 175, 0.9), 0 0 0 3.5px rgba(0, 0, 0, 0.85), 0 6px 16px rgba(0, 0, 0, 0.7);
+}
+
+.theme-key-omibranch-luna .btn-primary {
+  border-color: #0c4a0c;
+  border-width: 2px;
+}
+
+.theme-key-omibranch-luna .btn-primary:not(:is(.card, .dialog-card) *) {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -3px 6px rgba(0, 50, 0, 0.22),
+    var(--lw-start-halo);
+}
+
+.theme-key-omibranch-luna .btn-primary:hover:not(:disabled):not(:is(.card, .dialog-card) *) {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -3px 6px rgba(0, 50, 0, 0.2),
+    var(--lw-start-halo);
+}
+
+.theme-key-omibranch-luna .btn-primary:active:not(:disabled):not(:is(.card, .dialog-card) *) {
+  box-shadow: inset 0 2px 5px rgba(0, 30, 0, 0.45), var(--lw-start-halo);
+}
+
+.theme-key-omibranch-luna .btn-primary:focus-visible:not(:is(.card, .dialog-card) *) {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 0 0 2px #fbc761,
+    0 0 0 4px rgba(5, 40, 8, 0.8),
+    0 6px 14px rgba(0, 25, 0, 0.55);
+}
+
+.theme-key-omibranch-luna .btn-primary:disabled:not(:is(.card, .dialog-card) *) {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7), 0 0 0 3.5px rgba(5, 40, 8, 0.45);
+}
+
+/* ------------------------------------------------------------------ */
+/* v1.1 · Taskbar icons: bigger, 44 px+ touch targets                  */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1023px) {
+  .theme-key-omibranch-luna {
+    --bottom-nav-height: 72px;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav,
+  .theme-key-omibranch-luna .bottom-nav.bottom-nav-many {
+    height: calc(72px + var(--content-safe-area-bottom));
+    min-height: calc(72px + var(--content-safe-area-bottom));
+    padding-top: 7px;
+    padding-bottom: calc(7px + var(--content-safe-area-bottom));
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button {
+    min-width: 48px;
+    min-height: 56px;
+  }
+
+  .theme-key-omibranch-luna .bottom-nav button svg {
+    width: 38px !important;
+    height: 38px !important;
+    filter: drop-shadow(0 1px 1px rgba(0, 10, 60, 0.45)) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .theme-key-omibranch-luna .bottom-nav button svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* v1.1 · Titles for the windows that had an empty title bar           */
+/* ------------------------------------------------------------------ */
+
+.theme-key-omibranch-luna :is(.traffic-card-compact, .devices-summary-card)::after {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  left: 30px;
+  height: var(--lw-bar-h);
+  overflow: hidden;
+  color: var(--lw-bar-ink);
+  font-family: var(--font-logo);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: var(--lw-bar-h);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-shadow: var(--lw-bar-glow);
+  pointer-events: none;
+}
+
+.theme-key-omibranch-luna .traffic-card-compact::after { content: "Трафик"; }
+.theme-key-omibranch-luna .premium-traffic-card::after { content: "Премиум-трафик"; }
+.theme-key-omibranch-luna .devices-summary-card::after { content: "Устройства"; }
+
+.theme-key-omibranch-luna .traffic-card-compact:lang(en)::after { content: "Traffic"; }
+.theme-key-omibranch-luna .premium-traffic-card:lang(en)::after { content: "Premium traffic"; }
+.theme-key-omibranch-luna .devices-summary-card:lang(en)::after { content: "Devices"; }
+
+.theme-key-omibranch-luna .traffic-card-compact::after,
+.theme-key-omibranch-luna .devices-summary-card::after {
+  left: 30px;
+}
+
+.theme-key-omibranch-luna .card-compact.traffic-card-compact::after {
+  height: var(--lw-bar-h-sm);
+  left: 26px;
+  font-size: 13px;
+  line-height: var(--lw-bar-h-sm);
+}
+
+.theme-key-omibranch-luna .device-card::after {
+  content: "Устройство";
+  position: absolute;
+  top: 0;
+  right: 12px;
+  left: 30px;
+  height: var(--lw-bar-h);
+  overflow: hidden;
+  color: var(--lw-bar-ink);
+  font-family: var(--font-logo);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: var(--lw-bar-h);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-shadow: var(--lw-bar-glow);
+  pointer-events: none;
+}
+
+.theme-key-omibranch-luna .device-card:lang(en)::after { content: "Device"; }
+
+/* ------------------------------------------------------------------ */
+/* v1.1 · Phone home: the logo is a compact horizontal lockup pinned to */
+/* the top, which leaves the sky above the cat free for its balloon     */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1023px) {
+  .theme-key-omibranch-luna .login-brand.home-brand {
+    flex-direction: row;
+    align-self: start;
+    justify-content: center;
+    gap: 6px;
+    padding-top: max(18px, env(safe-area-inset-top, 0px));
+  }
+
+  .theme-key-omibranch-luna .home-brand .home-logo-slot {
+    flex: 0 0 auto;
+    width: calc(6rem * var(--home-logo-scale-effective, 1));
+  }
+}
+
+/* Dialogs that render their header through a custom snippet have no h2 to move into the bar. */
+.theme-key-omibranch-luna :is(.webapp-payment-dialog, .webapp-tariff-change-dialog):not(:has(.dialog-title-copy > h2))::after {
+  position: absolute;
+  top: 0;
+  right: 44px;
+  left: 30px;
+  height: var(--lw-bar-h);
+  overflow: hidden;
+  color: var(--lw-bar-ink);
+  font-family: var(--font-logo);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: var(--lw-bar-h);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-shadow: var(--lw-bar-glow);
+  pointer-events: none;
+}
+
+.theme-key-omibranch-luna .webapp-payment-dialog:not(:has(.dialog-title-copy > h2))::after { content: "Оплата"; }
+.theme-key-omibranch-luna .webapp-tariff-change-dialog:not(:has(.dialog-title-copy > h2))::after { content: "Смена тарифа"; }
+.theme-key-omibranch-luna .webapp-payment-dialog:not(:has(.dialog-title-copy > h2)):lang(en)::after { content: "Payment"; }
+.theme-key-omibranch-luna .webapp-tariff-change-dialog:not(:has(.dialog-title-copy > h2)):lang(en)::after { content: "Change plan"; }

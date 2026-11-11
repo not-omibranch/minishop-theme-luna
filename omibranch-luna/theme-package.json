@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "version": "1.1.0",
+  "description": {
+    "ru": "Тема в духе Windows XP Luna: синие окна, зелёная кнопка «Пуск», панель задач, холмы днём и луна ночью. Светлый вариант Luna и тёмный по мотивам Royale Noir. Свой логотип Minishop для светлого и тёмного вариантов. По желанию: котик-помощник с подсказками. Omibranch · omibranch.uk",
+    "en": "A Windows XP Luna inspired theme: blue windows, a green Start button, a taskbar, hills by day and a moon by night. Luna light and a Royale Noir inspired dark variant. Own Minishop logo, light and dark. Optional: a helper cat with hints. Omibranch · omibranch.uk"
+  },
+  "author": {
+    "name": "Omibranch · omibranch.uk"
+  },
+  "license": "MIT",
+  "homepage": "https://omibranch.uk",
+  "preview": "preview.webp",
+  "compatibility": {
+    "theme_api": 1
+  },
+  "effects": {
+    "api_version": 1,
+    "runtime": "trusted-dom",
+    "entry": "effects/main.js",
+    "styles": ["effects/luna-cat.css"],
+    "assets": [
+      "effects/cat/sit.webp",
+      "effects/cat/look.webp",
+      "effects/cat/walk-a.webp",
+      "effects/cat/walk-b.webp",
+      "effects/cat/sleep.webp",
+      "effects/cat/point.webp",
+      "effects/cat/jump.webp",
+      "effects/cat/peek.webp",
+      "effects/cat/wave.webp",
+      "icons/info.webp",
+      "icons/warning.webp"
+    ],
+    "targets": ["shell.background", "home.header.surface", "home.card.surface"],
+    "description": {
+      "ru": "Котик-помощник Omibranch: ходит по заголовкам окон, садится на то, что вы читаете, и изредка подсказывает в жёлтом балуне. Не закрывает кнопки, ставится на паузу, уважает «уменьшение движения».",
+      "en": "The Omibranch helper cat walks along window title bars, sits on what you read and now and then gives a hint in a yellow balloon. Never covers buttons, can be paused, respects reduced motion."
+    }
+  }
+}
