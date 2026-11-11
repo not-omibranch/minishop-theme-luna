@@ -1,5 +1,5 @@
 /*
- * Luna helper cat — theme effect for Remnawave Minishop (trusted-dom, api 1).
+ * Luna helper (paperclip Skrepysh or cat) — theme effect for Remnawave Minishop (trusted-dom, api 1).
  * Omibranch · omibranch.uk · MIT
  *
  * The Omibranch cat lives in the window title bars of the Luna theme, like the
@@ -16,7 +16,7 @@
  *    the in-balloon pause stop every movement.
  */
 
-const POSES = {
+const CAT_POSES = {
   sit: { file: "effects/cat/sit.webp", w: 878, h: 1205 },
   look: { file: "effects/cat/look.webp", w: 836, h: 1207 },
   walkA: { file: "effects/cat/walk-a.webp", w: 909, h: 976 },
@@ -27,6 +27,23 @@ const POSES = {
   peek: { file: "effects/cat/peek.webp", w: 966, h: 865 },
   wave: { file: "effects/cat/wave.webp", w: 898, h: 1210 },
 };
+const CLIP_POSES = {
+    sit: { file: "effects/clip/sit.webp", w: 537, h: 1205 },
+    look: { file: "effects/clip/look.webp", w: 542, h: 1210 },
+    point: { file: "effects/clip/point.webp", w: 693, h: 1210 },
+    sleep: { file: "effects/clip/sleep.webp", w: 1391, h: 587 },
+    wave: { file: "effects/clip/wave.webp", w: 673, h: 1210 },
+    peek: { file: "effects/clip/peek.webp", w: 527, h: 723 },
+    jump: { file: "effects/clip/jump.webp", w: 989, h: 783 },
+    walkA: { file: "effects/clip/walk-a.webp", w: 668, h: 1160 },
+    walkB: { file: "effects/clip/walk-b.webp", w: 753, h: 1155 },
+};
+// Two helpers share one behaviour: the paperclip "Скрепыш" (default) and the cat.
+const SETS = {
+  clip: { poses: CLIP_POSES, k: 1.75 },
+  cat: { poses: CAT_POSES, k: 1 },
+};
+const STORE_WHO = "luna-assistant";
 const SIT_PX = 1205; // source height of the sitting pose; every pose shares its scale
 
 const WINDOW_SELECTOR = ".card, .dialog-card, .notification-preferences";
@@ -65,7 +82,7 @@ const TEXT = {
     devicesFull: (used, max) => `Шучу. Подключено ${used} из ${max}, мест больше нет: ненужное можно отключить ниже.`,
     devices: (used, max) => `Шучу. Подключено ${used} из ${max}.`,
     supportTitle: "Похоже, вам нужна помощь",
-    support: "Опишите проблему в обращении. Отвечают люди, а не коты.",
+    support: "Опишите проблему в обращении. Отвечают люди.",
     settingsTitle: "Настройки",
     settings: "Здесь меняют язык и режим темы. А меня можно усыпить: нажмите на меня.",
     inviteTitle: "Похоже, вы зовёте друзей",
@@ -103,7 +120,7 @@ const TEXT = {
     devicesFull: (used, max) => `Just kidding. ${used} of ${max} connected, no free slots: unused ones can be removed below.`,
     devices: (used, max) => `Just kidding. ${used} of ${max} connected.`,
     supportTitle: "It looks like you need help",
-    support: "Describe the problem in a request. People answer, not cats.",
+    support: "Describe the problem in a request. People answer.",
     settingsTitle: "Settings",
     settings: "Language and theme mode live here. You can also put me to sleep: click me.",
     inviteTitle: "It looks like you are inviting friends",
@@ -113,6 +130,23 @@ const TEXT = {
     sleepTitle: "Sleeping",
     sleep: "Click me to wake me up.",
   },
+};
+
+const CLIP_TEXT = {
+  ru: {
+    support: "Опишите проблему в обращении. Отвечают люди, а не скрепки.",
+    callOther: "Позвать котика",
+    menuText: "Я скрепка-помощник Скрепыш. Сижу на окне, которое вы читаете, и подсказываю по делу.",
+  },
+  en: {
+    support: "Describe the problem in a request. People answer, not paperclips.",
+    callOther: "Call the cat",
+    menuText: "I am Skrepysh, the paperclip helper. I sit on the window you are reading and give useful hints.",
+  },
+};
+const CAT_TEXT = {
+  ru: { support: "Опишите проблему в обращении. Отвечают люди, а не коты.", callOther: "Позвать Скрепыша" },
+  en: { support: "Describe the problem in a request. People answer, not cats.", callOther: "Call the paperclip" },
 };
 
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
@@ -146,7 +180,9 @@ function parseMoney(text) {
 export function mount(host, initialContext) {
   let context = initialContext || {};
   const lang = String(context.language || document.documentElement.lang || "ru").toLowerCase().startsWith("ru") ? "ru" : "en";
-  const T = TEXT[lang];
+  let assistant = storage("local", STORE_WHO) === "cat" ? "cat" : "clip";
+  let T = { ...TEXT[lang], ...(assistant === "cat" ? CAT_TEXT : CLIP_TEXT)[lang] };
+  const POSES_NOW = () => SETS[assistant].poses;
   const reduceQuery = matchMedia("(prefers-reduced-motion: reduce)");
   const reduced = () => Boolean(context.reducedMotion || reduceQuery.matches);
 
@@ -168,16 +204,22 @@ export function mount(host, initialContext) {
   flip.className = "luna-cat-flip";
   cat.appendChild(flip);
   const imgs = {};
-  for (const [name, pose] of Object.entries(POSES)) {
-    const img = document.createElement("img");
-    img.alt = "";
-    img.decoding = "async";
-    img.draggable = false;
-    img.dataset.pose = name;
-    img.src = host.asset(pose.file);
-    flip.appendChild(img);
-    imgs[name] = img;
+  function buildImgs() {
+    flip.textContent = "";
+    for (const k of Object.keys(imgs)) delete imgs[k];
+    for (const [name, pose] of Object.entries(POSES_NOW())) {
+      const img = document.createElement("img");
+      img.alt = "";
+      img.decoding = "async";
+      img.draggable = false;
+      img.dataset.pose = name;
+      img.src = host.asset(pose.file);
+      flip.appendChild(img);
+      imgs[name] = img;
+    }
+    cat.dataset.who = assistant;
   }
+  buildImgs();
   const zzz = document.createElement("span");
   zzz.className = "luna-cat-zzz";
   zzz.textContent = "z";
@@ -241,7 +283,7 @@ export function mount(host, initialContext) {
   };
 
   function poseSize(name) {
-    const p = POSES[name];
+    const p = POSES_NOW()[name];
     return { w: Math.round(p.w * S.scale), h: Math.round(p.h * S.scale) };
   }
 
@@ -653,6 +695,23 @@ export function mount(host, initialContext) {
     layer.classList.toggle("is-paused", v);
   }
 
+  function switchAssistant() {
+    assistant = assistant === "clip" ? "cat" : "clip";
+    storage("local", STORE_WHO, assistant);
+    T = { ...TEXT[lang], ...(assistant === "cat" ? CAT_TEXT : CLIP_TEXT)[lang] };
+    cat.setAttribute("aria-label", T.helper);
+    hideBalloon();
+    buildImgs();
+    S.scale = 0;
+    S.pose = "";
+    setPose(S.mode === "sleep" ? "sleep" : "sit");
+    S.tipShown.clear();
+    const imgList = Object.values(imgs);
+    Promise.all(imgList.map((img) => (img.decode ? img.decode().catch(() => {}) : Promise.resolve()))).then(() => {
+      if (!host.signal.aborted) { computeScale(); S.lastInput = performance.now(); }
+    });
+  }
+
   function hideCat() {
     storage("session", STORE_HIDE, "1");
     hideBalloon();
@@ -676,6 +735,7 @@ export function mount(host, initialContext) {
       actions: [
         [T.tip, () => { S.tipShown.delete(S.screen); S.lastTip = 0; S.screenT = 0; S.scrollT = 0; hideBalloon(); maybeTip(performance.now()); }],
         [T.nap, () => setPaused(true)],
+        [T.callOther, () => switchAssistant()],
         [T.hide, () => hideCat()],
       ],
     });
@@ -710,7 +770,7 @@ export function mount(host, initialContext) {
   function computeScale() {
     const bar = 24;
     const sitH = clamp(bar + 18 + (innerWidth >= 1024 ? 6 : 0), 38, 50);
-    S.scale = sitH / SIT_PX;
+    S.scale = (sitH * SETS[assistant].k) / SIT_PX;
     for (const [name, img] of Object.entries(imgs)) {
       const { w, h } = poseSize(name);
       img.width = w;
